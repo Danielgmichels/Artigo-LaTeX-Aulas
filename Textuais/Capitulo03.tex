@@ -290,7 +290,34 @@ Rodando o \LaTeX localmente a gente vai ter que se acostumar a ler os logs de pr
 
 
 \section{Aula 9}
-Nesta aula nós saímos um pouco do \LaTeX e começamos a aprender sobre Git e GitHub
+Nesta aula nós saímos um pouco do \LaTeX e do overleaf e começamos a aprender sobre Git e GitHub. Nas últimas aulas a gente aprendeu a rodar o \LaTeX direto na máquina, porém isso gera um problema de como vamos salvar esses documentos? Como nós podemos ter um histórico de versões como no overleaf? O GitHub vem para responder essa pergunta. O GitHub é um repositório nas nuvens onde nós conseguimos salvar nossos documentos, fazer o versionamento desses documentos, e também nós conseguimos trabalhar em conjunto com mais de uma pessoa em um só documento tudo isso através do git. 
+
+Já o Git é uma ferramenta que a gente baixa na nossa máquina e ela serve como uma ferramenta que a gente salva todas as alterações de todos os documentos do projeto, como se fossem fotos ou marcos, registrando as linhas alteradas, quando a linha foi alterada e quem alterou. E isso funciona através de 3 estágios
+
+\begin{itemize}
+    \item Working Directory (Modificação): o primeiro estágio é a modificação, é quando a gente altera alguma linha, algum arquivo, adiciona ou deleta algum arquivo. Resumindo, qualquer pequena alteração em qualquer um dos arquivos do projeto;
+    \item Staging Area (Preparação): depois de fazermos todas as alterações necessárias a gente prepara os arquivos para salvar as alterações no nosso repositório das nuvens, e para isso nós usamos o comando "git add";
+    \item Repository (Consolidação): por fim, depois de termos preparado os arquivos nós consolidamos eles junto com uma mensagem, é como se a gente empacotasse os arquivos que preparamos e adicionamos uma mensagem/descrição junto com esse pacote para depois mandarmos para o repositório das nuvens, para isso usamos o comando "git commit -m ''". 
+\end{itemize}
+
+Quando nós rodamos o projeto \LaTeX na nossa máquina ele gera vários arquivos auxiliares, de logs e temporários, e isso a gente não precisa mandar para o nosso repositório porque são arquivos que geram e mudam a partir de cada compilação do nosso arquivo .tex, se a gente mandasse cada um desses arquivos para o repositório o nosso repositório iria ficar gigante e cheio de "lixo". Para evitar isso o Git possui um arquivo chamado .gitignore, este é um arquivo de texto simples que nós podemos adicionar arquivos que o git vai ignorar e não vai mandar para o repositório das nuvens de jeito nenhum. Esses arquivos são (lembrando que o "*" representa tudo, ou seja, "*.aux" representa "tudo que vem antes da extensão .aux"):
+
+\begin{itemize}
+    \item *.aux
+    \item *.log
+    \item *.bbl
+    \item *.blg
+    \item *.toc
+    \item *.fls
+    \item *.fdb\_latexmk
+    \item *.synctex.gz
+    \item *.pdf
+\end{itemize}
+
+Por fim depois da gente já ter feito as nossas modificações, já ter preparado os arquivos modificados, já ter feito o git commit com a nossa mensagen/descrição das alterações e já ter colocado todos os arquivos que serão ignorados no nosso .gitignore chegou a hora da gente enviar essas alterações para o nosso repositório nas nuvens, para isso nós precisamos primeiro criar um projeto no github (se ele já não estiver criado) e precisamos conectar o projeto da nossa máquina no repositório das nuvens (se já não estiver conectado) utilizando o comando "git remote add origin https://github.com/SeuUser/SeuProjeto.git", com o projeto conectado nós utilizamos o comando "git push origin main".
+
+Assim nós conseguimos deixar nosso projeto salvo nas nuvens, versionado, com histórico de alterações, e se você estiver trabalhando com uma equipe os outros integrantes podem trabalhar em um mesmo repositório, ou seja, todo mundo recebe as alterações de todos os integrantes.
+
 
 \section{Aula 10}
 \lipsum[1 - 3]
