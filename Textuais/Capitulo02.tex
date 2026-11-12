@@ -1,0 +1,120 @@
+
+
+\chapter{Fundamentação Teórica}
+
+\section{Preâmbulo}
+O preâmbulo no \LaTeX é a seção inicial, ela vem antes do conteúdo do documento (\textbackslash begin\{document\}) e ele serve para definir configurações para o documento, essas configurações incluem a definição do tipo do arquivo (artigo curto, artigo longo, livro, etc...), importar extensões e recursos para dentro do documento, esses recursos incluem tradução e hifenização automática (\textbackslash  usepackage[brazil]\{babel\}), inserção de imagens externas (\textbackslash usepackage \{graphicx\}), recursos para fórmulas e símbolos matemáticos (\textbackslash usepackage \{amsmath, amssymb\}), ajuste manual de margens e tamanho de páginas (\textbackslash usepackage[margin=XXcm]\{geometry\}), gerenciamento de bibliografias e citações (\textbackslash usepackage\{biblatex\}), entre outros. Por fim é no preâmbulo que nós definimos alguns metadados e informações gerais como título do trabalho, autores, datas, entre outros.
+
+\section{tableofcontents}
+Uma das grandes vantagens da escrita de um documento utilizando a ferramenta \LaTeX é que o sumário pode ser gerado automaticamente, essa criação do sumário é muito simples e pode ser gerado utilizando apenas um comando que é o \textbackslash tableofcontents. O sumário é gerado automaticamente com o nome de sumário e com uma hierarquia rígida que funciona como capítulo, seguido de seção, subseção e subsubseção. Existem algumas alterações que podemos fazer, por exemplo, as seções e capítulos possuem uma numeração padrão que vai seguindo uma ordem, porém quando tiramos a numeração essas seções e capítulos saem do nosso sumário, e para que eles apareçam novamente no sumário nó devemos utilizar esse comando \textbackslash addcontentsline\{arquivo\}\{unidade\}\{texto\} onde no lugar do arquivo nós colocamos onde o dado será gravado (toc = sumário, lof = figuras, lot = tabelas), a unidade é o nível do elemento (capítulo, seção, subseção e subsubseção para os sumários por exemplo) e o texto é o conteúdo que aparecerá no sumário, onde normalmente colocamos o nome da seção que não está com a numeração.
+
+\section{Listas}
+
+As listas no \LaTeX podem ser criadas a partir de comandos que partem do \textbackslash begin\{\}, e dentro das chaves nós podemos vamos passar parametros para formatação de diferentes tipos de listas.
+
+Utilizando o \textbackslash begin\{itemize\} nós criamos ambiente de lista não ordenada, onde cada item da lista vai ser criado utilizando o comando \textbackslash item, como no exemplo a seguir:
+
+\begin{itemize}
+    \item Este é um exemplo
+    \item de lista não odenada
+    \item onde cada item vai ser representado por uma "bolinha"
+\end{itemize}
+
+utilizando o \textbackslash begin\{enumerate\} nós criamos ambientes de listas ordenadas numericamente, onde a cada item vai ser criado utilizando o mesmo comando de \textbackslash item porém cada item vai ser gerado por padrão com uma sequência numerica automaticamente, como podemos ver no exemplo a seguir:
+
+\begin{enumerate}
+    \item Este é um exemplo
+    \item de lista ordenada padrão do \LaTeX
+    \item onde cada item vai ser representado por uma sequência numerica
+\end{enumerate}
+
+\section{Matrizes}
+As matrizes no \LaTeX são representadas através de ambientes matriciais, primeiramente para conseguirmos usar esses ambientes nós precisaremos importar um pacote matemático chamado amsmath (\textbackslash usepackage\{amsmath\}). Depois da importação desse pacote nós podemos utilizar os ambientes matriciais sempre dentro de \textbackslash[...\textbackslash]. Existem vários tipos de matrizes que podemos usar, a primeira delas é a matriz simples onde utilizamos o ambiente matix (\textbackslash begin\{matix\}), e o resultado é esse:
+
+\[\begin{matrix}
+    1 & 2 & 3\\
+    a & b & c
+\end{matrix}\]
+
+A segunda matriz que podemos criar é a matriz que utiliza parenteses pra limitar a matriz, para isso ao invés de utilizarmos o ambiente matrix nós utilizaremos o ambiente pmatrix (\textbackslash begin\{pmatrix\}, assim os parenteses vão cobrir toda a lateral da matriz, como podemos ver nessa matriz:
+
+\[\begin{pmatrix}
+    1 & 2 & 3\\
+    a & b & c
+\end{pmatrix}\]
+
+A terceira matiz que podemos criar é a que utiliza colchetes, essa matriz é criada com o ambiente bmatrix:
+
+\[\begin{bmatrix}
+    1 & 2 & 3\\
+    a & b & c
+\end{bmatrix}\]
+
+A quarta matriz que podemos criar utiliza chaves com o ambiente Bmatrix:
+
+\[\begin{Bmatrix}
+    1 & 2 & 3\\
+    a & b & c
+\end{Bmatrix}\]
+
+A quinta matriz que podemos criar é a que utiliza barras verticais que são chamadas de "pipes", esta matriz criamos com o ambiente vmatrix:
+
+\[\begin{vmatrix}
+    1 & 2 & 3\\
+    a & b & c
+\end{vmatrix}\]
+
+Por fim nós podemos criar matrizes que utilizam barras verticais duplas, para isso usaremos o ambiente Vmatrix:
+
+\[\begin{Vmatrix}
+    1 & 2 & 3\\
+    a & b & c
+\end{Vmatrix}\]
+
+Existe um último detalhe de matrizes que é a utilização dos "3 pontinhos" pra representar um intervalo de valores entre as colunas ou linhas ou diagonais, esses "3 pontinhos" nós podemos adicionar utilizando os comandos \textbackslash cdots para os "3 pontinhos" horizontais, \textbackslash vdots para os verticais e \textbackslash ddots para os diagonais, por exemplo nesta matriz:
+
+\[\begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n}\\
+    a_{21} & a_{22} & \cdots & a_{2n}\\
+    \vdots & \vdots & \ddots & \vdots\\
+    a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}\]
+
+\section{Posicionamento de imagens e tabelas}
+Os ambientes de imagens e tabelas possuem um posicionamento flutuante, isso quer dizer que diferente da inserção de imagens do word, que a imagem ela fica exatamente no lugar do texto que você posicionou ela, a imagem dentro do \LaTeX vai possuir um posicionamento que não necessariamente vai ser onde você criou o ambiente, a imagem ela vai ser posicionada em um lugar onde ela evite espaços em brancos. Por exemplo um problema muito recorrente quando nós estamos escrevendo um documento no word é que quando nós adicionamos uma imagem no meio do texto e ela é muito grande para caber onde nós adicionamos ela, o word manda a imagem para a outra página e deixa um espaço enorme em branco no final da página que a imagem não coube, e isso deixa nosso documento muito mais feio e dificulta a leitura. No \LaTeX o posicionamento das imagens e tabelas são flutuantes, isso significa que não necessariamente a imagem ou tabela vai ocupar o lugar exato onde a gente adicionou ela. Vamos utilizar o mesmo exemplo que dei para o word, se no \LaTeX a gente adicionasse uma figura no final de uma página onde essa figura não coubesse ela também iria ser mandada para a próxima página, porém automaticamente todo aquele espaço em branco que iria ficar no final da página é preenchido de forma inteligente com textos que viriam logo após a imagem, deixando a leitura mais fluida e deixando o documento mais organizado.
+
+Esse comportamento flutuante das imagens e tabelas podem ser programados da forma que acharmos melhor, exitem alguns argumentos opicionais que a gente pode passar ao criarmos um ambiente de imagem ou tabelas flutuantes, esses argumentos especificam o posicionamento esperado para esse ambiente, esses argumentos são o "h", "t", "b", "p", "!" e o "H". o "h" indica que ao iniciar o nosso ambiente, a tabela ou a figura vai ter que tentar ser encaixada naquele exato lugar onde criamos o ambiente, o "t" indica que a imagem vai ter que tentar ser alocada no topo da página, o "b" indica a alocação na parte inferior da página, o "p" indica a alocação em uma página exclusiva apenas para aquele elemento, o "!" indica a sobreposição ignorando regras internas de espaçamento do \LaTeX e por fim o "H" força a alocação do elemento no lugar que o ambiente foi criado.
+
+Esses argumentos podem ser agrupados para gerar uma hierarquia de comportamento, por exemplo se eu colocar "htbp" como argumento (que é o agrupamento mais utilizado) o elemento vai ser primeiro tentado ser alocado no lugar que o ambiente foi criado, se não for possível ele vai ser alocado no topo da página, se não for possível ele vai ser alocado na parte inferior da página, e assim em diante.
+
+\section{hyperref}
+O hyperref é um pacote que podemos importar que possibilita links interativos, tanto para links externos como utls ou emails quanto para links de referências cruzadas e citações. Esse pacote nós importamos utilizando \textbackslash usepackage\{hyperref\}.
+Por padrão o hyperref cria esses links interativos com bordas e coloridos, porém o pacote nos dá total liberdade para personalizar-mos esses links interativos. Para personalizar nós utilizamos a função \textbackslash hypersetup logo após importar o pacote. Dentro desta função nós podemos vários elementos dos hyperrefs como colorlink para ativar e desativar o uso de cores nesses textos, linkcolor para definir a cor dos links, citecolor para definir a cor das citações, urlcolor para definir a cor das urls, filecolor para definir a cor de links que abrem arquivos locais armazenados no computador, e por fim podemos também desativar os links utilizando o hidelinks.
+
+\section{.bib}
+O arquivo de extensão .bib é o arquivo onde nós vamos colocar todas as referências bibliográficas (livros, artigos, teses, tcc, site, etc), essas referências a gente vai colocar de uma forma estruturada dentro do nosso arquivo .bib, cada uma das referências vai se iniciar com um \@ e o tipo da referência (ex: \@ article, \@ book), depois nós abrimos uma chave onde a primeira informação que colocamos dentro dessa chave é um nome único que utilizaremos ao longo do documento, depois disso adicionamos todas as informações da referência de forma estruturada dentro dessas chaves, essas informações variam de acordo com o tipo de referência, por exemplo em um artigo nós temos informações como author, title, journal, volume, number, pages, year, publisher, entre outros.
+
+Dentro do documento principal (.tex) nós precisamos chamar o arquivo .bib para poder usar as referências que adicionamos dentro do arquivo. Para isso nós utilizamos dois comandos, o \textbackslash bibliographystyle\{\} pra definir o estilo das referências bibliográficas (ex: plain, apalike, ieeetr) e o \textbackslash bibliography\{\} onde nós passamos o nome do nosso arquivo .bib sem a extensão .bib.
+
+Para utilizarmos essa referência em forma de citação dentro do texto nós utilizamos o comando \textbackslash cite\{\} passando como argumento aquele nome único que definimos para a referência no arquivo .bib.
+
+\section{.log}
+O arquivo .log é um arquivo gerado depois da compilação do documento que serve para diagnóstico de erros e para mostrar informações importantes da compilação, é nele que nós conseguimos ver as mensagens de erros fatais gerados na compilação, os avisos (warnings). Alguns exemplos de erros fatais são:
+
+\begin{itemize}
+    \item ! Undefined control sequence.: ocorre quando algum comando ou função foi digitado errado.
+    \item ! Missing \$ inserted.: ocorre quando utilizamos algum símbolo matemático no meio do texto sem ter aberto o ambiente matemático (como por exemplo um underline).
+    \item ! File ended while scanning use of...: ocorre quando abrimos um ambiente  e esquecemos de fechar ele.
+    \item Perhaps a missing \textbackslash item: ocorre quando abrimos um ambiente de lista e não adicionamos nenhum item dentro dele.
+\end{itemize}
+
+Exemplos de avisos (warnings):
+
+\begin{itemize}
+    \item Citation "XXXXX" on page XX undefined on input line XX.: ocorre quando utilizamos o \textbackslash cite\{\} passando como argumento algum referência que não foi adicionada no nosso arquivo .bib.
+    \item Overfull \textbackslash hbox (XX.XXpt too wide) in paragrapf at lines XX--XX.: ocorre quando algum elemento do texto, como figura, tabela ou texto, ultrapassa os limites de recuo do documento, ultrapassando as margens invisíveis do documento.
+    \item Underfull \textbackslash hbox (badness XXXXXXXX) in paragraph at lines XX--XX.: ocorre quando o \LaTeX foi forçado a esticar demais os espaços entre as palavras para conseguir justificar o texto deixando o visual do parágrafo com muitos espaços em branco.
+    \item Label(s) may have changed. Rerun to get cross-references right.: indica que o documento precisa ser re-compilado por conta da adição de novos elementos como novos índices, legendas ou referências.
+\end{itemize}
+
+Além disso dentro do arquivo .log nós conseguimos encontrar também informações de qual motor de compilação foi usado junto com a versão exata dele (Ex: pdfTeX, Version XX). Podemos encontrar também informações de quais pacotes e fontes foram carregados e suas respectivas versões.
