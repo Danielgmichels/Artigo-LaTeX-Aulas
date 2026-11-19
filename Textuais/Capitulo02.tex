@@ -118,3 +118,8 @@ Exemplos de avisos (warnings):
 \end{itemize}
 
 Além disso dentro do arquivo .log nós conseguimos encontrar também informações de qual motor de compilação foi usado junto com a versão exata dele (Ex: pdfTeX, Version XX). Podemos encontrar também informações de quais pacotes e fontes foram carregados e suas respectivas versões.
+
+\section{includeonly}
+Quando a gente está trabalhando em um documento muito grande, é comum que a gente tenha que fazer uma pequena alteração, as vezes nós esquecemos de colocar um acento e só percebemos depois de compilar o arquivo inteiro, e para não precisar compilar tudo novamente, as vezes demorando alguns minutos para concluir dependendo do tamanho do documento e da máquina que estamos usando, o \LaTeX disponibiliza um comando chamado \textbackslash includeonly\{\}, quando usamos este comando nós passamos como parâmetro os arquivos que a gente alterou para que o \LaTeX compile apenas esses arquivos e reutilize todos os outros arquivos, é importante saber que para isso funcionar o arquivo precisa estar modularizado, se você tem os capítulos do documento em arquivos separados você pode usar este comando e recompilar apenas o capítulo que você modificou, outro detalhe importante é que você tem que passar como parâmetro apenas o nome do arquivo sem a extensão .tex.
+
+Este comando permite você passar mais de um arquivo usando apenas uma vez o comando, cada arquivo vai ser separado por vírgulas, exemplo: \textbackslash includeonly\{capitulo1, capitulo2, conclusao\}.

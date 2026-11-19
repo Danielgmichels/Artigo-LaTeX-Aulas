@@ -212,7 +212,7 @@ Porém dentro de um documento nós não apenas largamos uma imagem no meio do te
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\linewidth]{figures/zick.jpg}
+    \includegraphics[width=0.5\linewidth]{zick.jpg}
     \caption{Descrição de exemplo}
     \label{fig:zickinho}
 \end{figure}
@@ -320,7 +320,22 @@ Assim nós conseguimos deixar nosso projeto salvo nas nuvens, versionado, com hi
 
 
 \section{Aula 10}
-\lipsum[1 - 3]
+A aula de hoje foi focada em modularização de documentos e diretórios para facilitar e organizar um projeto grande como um TCC. 
+
+Primeiramente nós precisamos entender o que é modularizar, basicamente modularizar é a gente dividir um grande sistema, processo, programa ou até documento em pequenas partes que chamamos de módulos, onde cada módulo vai receber uma responsabilidade dentro desse grande sistema.
+
+Então por exemplo em um TCC, que é um documento extremamente extenso, com vários capítulos, várias imagens, vários pacotes, vários elementos pré e pós textuais, tudo isso em um arquivo só, isso vai gerar um arquivo main.tex muito longo dificultando para o escritor encontrar cada elemento no meio de um arquivo que pode passar de 100 páginas e centenas ou até milhares de linhas.
+
+Além disso escrever um documento em um arquivo só gera outro problema quando estamos trabalhando em equipe usando o git. Supondo que duas pessoas estão mexendo no arquivo só que em capítulos diferentes o git hub vai entender que os dois estão mexendo no mesmo arquivo o que pode gerar conflitos, e isso escala quando a gente trabalha em uma equipe de mais pessoas.
+
+Então para facilitar a vida de todo mundo e deixar nosso documento muito mais organizado nós modularizamos nosso documento em pequenos arquivos, por exemplo, nós podemos separar do nosso arquivo principal um arquivo de pacotes, arquivos para cada elemento pré-textual como o abstract, o resumo, a capa, a folha de rosto, etc.. além dos elementos textuais como cada um dos capítulos, metodologia, fundamentação teórica, introdução, etc... e os elementos pós-textuais como os anexos, apêndice, glossáiro, etc...
+
+E depois de separar cada elemento do texto em módulos nós só vamos precisar chamar esses elementos para o nosso texto no momento que a gente quiser. Existem duas funções que nós podemos usar para isso, que é a \textbackslash input\{\} e o \textbackslash include\{\}. A diferença entre os dois é bem simples, o \textbackslash input\{\} ele vai servir como um copia e cola, então se eu quiser chamar um arquivo de introdução que dentro desse arquivo eu escrevi toda minha introdução eu apenas passo como argumento o nome do arquivo, por exemplo \textbackslash input\{introducao.tex\}, aí o \LaTeX vai entender que naquele exato momento que essa função foi chamada o texto do arquivo introducao.tex vai ser colado alí naquela chamada de função. E o \textbackslash include\{\} ele vai possuir uma formatação pré definida, fazendo uma quebra de página antes e depois desta função, então ao invés de só colar o texto que estava dentro do arquivo ela vai iniciar uma nova página pra só então colar o texto e depois o texto que vier em seguida vai se iniciar em uma nova página também. O \textbackslash input\{\} é muito mais comum ser usado em artigos, já o \textbackslash include\{\} por ter essa formatação é muito mais comum ser usado em livros e TCCs 
+
+Essa modularização torna nosso documento muito mais organizado e facilita muito se a gente quiser alterar algum elemento específico do texto.
+
+Existe outro problema muito comum quando a gente está escrevendo um TCC ou um documento muito cumprido, por exemplo se eu compilei as 80 páginas do TCC e percebi que esqueci de colocar um acento no meio do capítulo 5, eu corrijo e vou ter que esperar o arquivo todo compilar novamente. Com a modularização nós temos uma solução bem simples para esse problema que é a função \textbackslash includeonly\{\} onde somente os arquivos que forem passados como parâmetro dentro dessa função vão ser compilados novamente, e todo o resto do documento vai ser reutilizado sem compilar novamente, então nesse nosso exemplo nós apenas colocaríamos esta função no início do documento passando como argumento \textbackslash includeonly\{capitulo5\} e apenas o capítulo 5 iria ser recompilado.
+
 
 \section{Aula 11}
 \lipsum[1 - 3]
